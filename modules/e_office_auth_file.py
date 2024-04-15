@@ -9,7 +9,7 @@ from rich.console import Console
 from prompt_toolkit import PromptSession
 from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.history import InMemoryHistory
-from custom_print import custom_print
+from libs.custom_print import custom_print
 import base64
 from time import sleep
 
