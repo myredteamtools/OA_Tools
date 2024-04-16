@@ -9,9 +9,21 @@ def mainmenu() -> None:
     try:
         global Product
         Product = input("OA_Tools:\n[1]\tUfida\n[2]\tEcology\n\n\nInput:")
-        Selector(Product)
+        routes(Product)
     except KeyboardInterrupt:
         print("KeyBoard Interrupted!!")
+
+def routes(flag) -> None:
+    if flag == "1":
+        Options = input("Ufida:\n[1]\tUfida_NC65_ConfigResourceServlet_Deserialization")
+        if Options == "1":
+            Selector(1)
+    elif flag == "2":
+        Options = input("Ecology:\n[1]\tEoffice_v10_Auth_File_Laravel_Deserialization")
+        if Options == "1":
+            Selector(2)
+    else:
+        mainmenu()
 
 def Selector(flag) -> None:
     global Product

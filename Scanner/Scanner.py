@@ -11,8 +11,8 @@ class Scanner:
     def __init__(self, target:Optional[Target], flag:str) -> None:
         self.target = target
         if flag == "1":
-            from modules.ufida_etag import exp, upload_shell
-            self.target.vulnerable_name="Ufida_NC65_Etag_Deserialization"
+            from modules.ufida_ConfigResourceServlet import exp, upload_shell
+            self.target.vulnerable_name="Ufida_NC65_ConfigResourceServlet_Deserialization"
         elif flag == "2":
             from modules.e_office_af import exp, upload_shell
             self.target.vulnerable_name="Eoffice_v10_Auth_File_Laravel_Deserialization"
