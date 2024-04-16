@@ -5,15 +5,19 @@
 cd libs
 git clone https://github.com/ambionics/phpggc 
 ```
-3. Install requirements
+3. Get ysoserial
+``` bash
+wget https://github.com/frohoff/ysoserial/releases/download/v0.0.6/ysoserial-all.jar
+```
+4. Install requirements
 ``` bash
 python3 -m pip install -r requirements.txt
 ```
-4. Run?
+1. Run?
 ``` bash
 python3 main.py
 ```
-5. Have fun.
+1. Have fun.
 
 # Now avaliable exps
 |Name|Type|Products|Update Time|
