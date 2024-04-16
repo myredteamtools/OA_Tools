@@ -34,3 +34,6 @@ To use these tools, you must comply with local legal regulations, or authorized.
 |---|---|
 |Rebuild to modules applications|16.Apr,2024|
 |Init|14.Apr,2024|
+
+# TODO
+[] make setup.py
