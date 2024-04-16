@@ -57,7 +57,7 @@ def exp(target, cmd:str = "whoami", verbose: bool = True) -> str:
                 custom_print(f"Critical error!", "!")
         return result
 
-def upload_shell(target:Target,file_path):
+def upload_shell(target:Target,file_path:str=""):
         try:
             with open(file_path, 'rb') as f:
                 b64_encoded = base64.b64encode(f.read()).decode()

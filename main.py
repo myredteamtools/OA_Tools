@@ -1,7 +1,7 @@
 from Scanner.Scanner import Scanner
 from model.model import Target
 from typing import List
-
+from libs.custom_print import custom_print
 
 Product = 0
 Thread:int = 5
@@ -11,13 +11,15 @@ def mainmenu() -> None:
         Product = input("OA_Tools:\n[1]\tUfida\n[2]\tEcology\n\n\nInput:")
         routes(Product)
     except KeyboardInterrupt:
-        print("KeyBoard Interrupted!!")
+        custom_print("KeyBoard Interrupted!!","-")
 
 def routes(flag) -> None:
     if flag == "1":
-        Options = input("Ufida:\n[1]\tUfida_NC65_ConfigResourceServlet_Deserialization")
+        Options = input("Ufida:\n[1]\tUfida_NC65_ConfigResourceServlet_Deserialization\n[2]\tUfida_NC65_NCEmessage_derserialization\n")
         if Options == "1":
             Selector(1)
+        elif Options == "2":
+            Selector(3)
     elif flag == "2":
         Options = input("Ecology:\n[1]\tEoffice_v10_Auth_File_Laravel_Deserialization")
         if Options == "1":
@@ -28,7 +30,6 @@ def routes(flag) -> None:
 def Selector(flag) -> None:
     global Product
     Options = input("Options:\n[1]\tSingle_URL\n[2]\tMulti URL\n[Others]\tMain Menu\n\n\nInput:  ")
-    print(Options)
     if Options == "1":
         url = input("URL:")
         proxy = input("HTTP Proxy[Optional]: ")
@@ -56,13 +57,14 @@ def Single_Check(Instance,target) -> None:
             Instance.interactive_shell()
             Single_Check(Instance,target)
         elif Options == "3":
+            file_path = ""
             file_path = input("File_Path:  ")
             Instance.upload_webshell(target=target,file_path=file_path)
             Single_Check(Instance,target)
         else:
             mainmenu()
     except KeyboardInterrupt:
-        print("KeyBoard Interrupted!!")
+        custom_print("KeyBoard Interrupted!!","-")
 
 
 def Multi_Check(target,Instance,input_path,output_path) -> None:
@@ -83,7 +85,7 @@ def Multi_Check(target,Instance,input_path,output_path) -> None:
         else:
             mainmenu()
     except KeyboardInterrupt:
-        print("KeyBoard Interrupted!!")
+        custom_print("KeyBoard Interrupted!!","-")
     
 
 def main() -> None:

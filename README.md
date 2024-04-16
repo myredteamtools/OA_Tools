@@ -20,6 +20,7 @@ python3 main.py
 |---|---|---|---|
 |e-office v10 auth-file|RCE|Ecology_E_Office_v10|Apr.14,2024|
 |NC-ConfigResourceServlet-Deserialization|RCE|UFIDA_NC65|Apr.15,2024|
+|NC-NCEmessage-Deserialization|RCE|UFIDA_NC65|Apr.16,2024|
 
 # Declare
 To use these tools, you must comply with local legal regulations, or authorized. The losses incurred are not related to the implementation of this repository.
